@@ -19,6 +19,11 @@
             <artifactId>psh-security-browser</artifactId>
             <version>${psh.security.version}</version>
         </dependency>
+        <!--引入测试框架-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
