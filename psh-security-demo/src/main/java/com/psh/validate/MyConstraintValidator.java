@@ -20,7 +20,7 @@ import javax.validation.ConstraintValidatorContext;
  */
 public class MyConstraintValidator implements ConstraintValidator<MyConstraint,Object> {
 
-    //sprin 容器对象 可以使用次注解
+    //spring 容器对象 可以使用次注解
     @Autowired
     private HelloService helloService;
 

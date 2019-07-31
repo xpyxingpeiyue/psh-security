@@ -4,6 +4,7 @@ import cn.hutool.json.JSONUtil;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.psh.dto.User;
 import com.psh.dto.UserParam;
+import com.psh.exception.UserException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.BindingResult;
@@ -61,13 +62,14 @@ public class UserController {
     public User getInfo(@PathVariable("id") String id) {
         User user = new User();
         user.setUsername("tom");
+        System.out.println("获取用户信息完成");
         return user;
     }
 
     /**
      * @RequestBody 用于post请求application/json json格式数据
      * get请求不需要
-     *
+     * <p>
      * Hibernate Validator API文档
      * 1、java自带注解需要配合@Valid 才能生效，无法执行方法体
      * 2、BindingResult 存储注解的错误信息，可以继续执行方法体
@@ -76,9 +78,9 @@ public class UserController {
      */
 
     @PostMapping
-    public User create(@Valid  @RequestBody User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            bindingResult.getAllErrors().forEach(error-> System.out.println(error.getDefaultMessage()));
+    public User create(@Valid @RequestBody User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
         }
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
@@ -86,16 +88,44 @@ public class UserController {
         user.setId("1");
         return user;
     }
+
     @PutMapping("/{id:\\d+}")
-    public User update(@Valid  @RequestBody User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()){
-            bindingResult.getAllErrors().forEach(error-> System.out.println(error.getDefaultMessage()));
+    public User update(@Valid @RequestBody User user, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            bindingResult.getAllErrors().forEach(error -> System.out.println(error.getDefaultMessage()));
         }
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         System.out.println(user.getBirthday());//自动转为日期
         user.setId("1");
         return user;
+    }
+
+    @DeleteMapping("/{id:\\d+}")
+    public User delete(@PathVariable String id) {
+        User user = new User();
+        user.setId("1");
+        return user;
+    }
+
+    //默认情况下springboot会将错误信息返回
+    @PostMapping("/test")
+    public User test(@Valid @RequestBody User user) {
+        return user;
+    }
+
+    //springboot 默认异常只会getMessage异常信息，不会读取消息以外的其他信息,无法输出自定义字段，只能添加错误器的控制处理器@ControllerAdvice
+    @GetMapping("/test/{id}")
+    public User test2(@PathVariable String id) {
+        //500异常
+//        throw new RuntimeException("user not exist");
+        throw new UserException("user not exist", id);
+    }
+
+    @GetMapping("/test3/{id}")
+    public User test3(@PathVariable String id) {
+        //自定义异常被统一advice处理，则不算是异常，spring抛出的异常才会被拦截处理
+        throw new RuntimeException("User3 is not exist");
     }
 
     private List<User> getUsers() {

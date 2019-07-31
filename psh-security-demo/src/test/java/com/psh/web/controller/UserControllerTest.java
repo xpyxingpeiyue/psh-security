@@ -1,10 +1,10 @@
 package com.psh.web.controller;
 
-import cn.hutool.core.date.DateUtil;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.BasicErrorController;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,7 +15,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Date;
 
@@ -69,7 +68,6 @@ public class UserControllerTest {
                 .getContentAsString();
         System.out.println(info);
     }
-
     @Test
     public void whenGetInfoFail() throws Exception {
         //验证地址校验
@@ -106,8 +104,14 @@ public class UserControllerTest {
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"))//保存返回id
                 .andReturn().getResponse().getContentAsString();
-        ;
         System.out.println(str);
+    }
+    @Test
+    public void whenDeleteSuccess() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.delete("/user/1")
+                .contentType(MediaType.APPLICATION_JSON_UTF8))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
     }
 
 }
