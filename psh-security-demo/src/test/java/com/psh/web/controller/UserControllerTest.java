@@ -84,7 +84,7 @@ public class UserControllerTest {
         //注意
         //前台传时间戳
         //后台自动把时间戳转为日期格式
-        String content = "{\"username\":\"ing\",\"birthday\":" + date.getTime() + "}";
+        String content = "{\"username\":\"xing\",\"password\":\"123456\",\"birthday\":" + date.getTime() + "}";
         String str = mockMvc.perform(MockMvcRequestBuilders.post("/user")
                 .contentType(MediaType.APPLICATION_JSON_UTF8).content(content))
                 .andExpect(MockMvcResultMatchers.status().isOk())

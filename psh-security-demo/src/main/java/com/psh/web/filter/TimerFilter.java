@@ -9,6 +9,8 @@ import java.io.IOException;
  * Created by peiyue.xing on 2019/7/30 18:57
  * 使用原生的servlet 的filter实现过滤请求
  * 缺点：只能拿到request和response的请求，因为不属于spring，所以无法获取是有那个controller的那个方法发送的请求
+ *
+ * 注意： filter 拦截 只有客户端http请求才拦截
  * @author peiyue.xing
  */
 //第一种方式添加到spring容器中  注解方式

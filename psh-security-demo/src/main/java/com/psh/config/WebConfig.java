@@ -1,5 +1,6 @@
 package com.psh.config;
 
+import com.psh.web.filter.ParamsFilter;
 import com.psh.web.filter.TimerFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,8 @@ public class WebConfig {
     @Bean
     public FilterRegistrationBean timerFilter() {
         FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        TimerFilter timerFilter = new TimerFilter();
+//        TimerFilter timerFilter = new TimerFilter();
+        ParamsFilter timerFilter = new ParamsFilter();
         //将filter假如filterbean (SpringBoot)
         filterRegistrationBean.setFilter(timerFilter);
         //指定拦截的controller地址
