@@ -142,6 +142,17 @@ execution(* com.travelsky.ccboy.dao..*.find*(..)) || execution(* com.travelsky.c
  
  #### 异步处理REST服务  
  - 使用Runnable异步处理rest服务  
- - 使用DeferredResult异步处理Rest服务  
- - 异步处理配置  
+ - 使用DeferredResult异步处理Rest服务（*）  
+ - 异步处理配置    
+ 
+ #### 使用wsagger生成API文档  
+ /swagger-ui.html  
+ 
+ #### 使用WireMock快速伪造RESTful服务  
+ 在未开始前为前台提供伪数据  
+ 官网：http://wiremock.org/  
+ http://wiremock.org/docs/running-standalone/  
+ docs->Running as a Standalone Process->java -jar wiremock-standalone-2.24.0.jar --port 8088  
+ 
+ 
  

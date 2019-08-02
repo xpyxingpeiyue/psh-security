@@ -1,12 +1,17 @@
 package com.psh.dto;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * Created by peiyue.xing on 2019/7/29 18:34
  *
  * @version:
  */
 public class UserParam {
+    //wsagger接口参数
+    @ApiModelProperty(value = "用户名")
     private String username;
+    @ApiModelProperty(value = "年龄")
     private Integer age;
 
     public String getUsername() {

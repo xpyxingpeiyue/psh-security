@@ -5,10 +5,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.psh.dto.User;
 import com.psh.dto.UserParam;
 import com.psh.exception.UserException;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
@@ -42,6 +45,7 @@ public class UserController {
 //    @RequestMapping(value = "/user", method = RequestMethod.GET)
     @GetMapping()//重构
     @JsonView(User.UserSimpleView.class)
+    @ApiOperation(value = "用户查询")
     public List<User> query2(UserParam userParam, @PageableDefault(size = 15, page = 1, sort = {"username"}) Pageable pageable) {
         System.out.println(JSONUtil.parseObj(userParam));
         System.out.println(pageable.getPageSize());
@@ -59,7 +63,7 @@ public class UserController {
 //    @RequestMapping(value = "/user/{id:\\d+}", method = RequestMethod.GET)
     @GetMapping("/{id:\\d+}")
     @JsonView(User.UserComplexView.class)
-    public User getInfo(@PathVariable("id") String id) {
+    public User getInfo(@ApiParam(value = "用户id") @PathVariable("id") String id) {
         User user = new User();
         user.setUsername("tom");
         System.out.println("获取用户信息完成");
@@ -122,6 +126,7 @@ public class UserController {
         throw new UserException("user not exist", id);
     }
 
+    @ApiIgnore//不显示
     @GetMapping("/test3/{id}")
     public User test3(@PathVariable String id) {
         //自定义异常被统一advice处理，则不算是异常，spring抛出的异常才会被拦截处理

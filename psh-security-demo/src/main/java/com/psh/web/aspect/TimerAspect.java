@@ -17,8 +17,8 @@ import java.util.stream.Stream;
  *
  * @author peiyue.xing
  */
-@Aspect
-@Component
+//@Aspect
+//@Component
 public class TimerAspect {
     @Around("execution(* com.psh.web.controller.UserController.*(..))")
 //    @Around("timePoint()")
