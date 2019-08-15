@@ -34,6 +34,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 //            http.httpBasic();//默认弹出窗模式
         http.formLogin()//规定表单登录方式
                 .loginPage("/page/login/login.html")//指定登录页
+                .loginProcessingUrl("/authorization/login")//为指定的登录页指定form(action)提交路径
                 .and()
                 .authorizeRequests()//然后授权请求方式
                 .antMatchers("/page/login/login.html","/**/*.css","/**/*.js","/favicon.ico").permitAll()//指定不拦截

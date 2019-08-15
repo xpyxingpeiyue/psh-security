@@ -154,5 +154,11 @@ execution(* com.travelsky.ccboy.dao..*.find*(..)) || execution(* com.travelsky.c
  http://wiremock.org/docs/running-standalone/  
  docs->Running as a Standalone Process->java -jar wiremock-standalone-2.24.0.jar --port 8088  
  
+ #### SpringSecurity开发基于表单的认证  
+ #####个性化认证流程  
+ - 自定义登录页面  
+ - 自定义登录成功处理  
+ - 自定义登录失败处理
+ 
  
  
