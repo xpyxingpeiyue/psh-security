@@ -1,12 +1,13 @@
 package com.psh.security.browser.config;
 
+import com.psh.security.browser.properties.SecurityProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.access.ExceptionTranslationFilter;
 
 /**
  * Created by peiyue.xing on 2019/8/3 12:35
@@ -22,6 +23,14 @@ import org.springframework.security.web.access.ExceptionTranslationFilter;
  */
 @Configuration
 public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
+    @Autowired
+    private AuthSuccessHandler authSuccessHandler;
+
+    @Autowired
+    private AuthFailHandler authFailHandler;
+
+    @Autowired
+    private SecurityProperties securityProperties;
     //定义加密解密方式
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -33,8 +42,10 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
 //            http.httpBasic();//默认弹出窗模式
         http.formLogin()//规定表单登录方式
-                .loginPage("/page/login/login.html")//指定登录页
+                .loginPage(securityProperties.getBrowser().getPageLogin())//指定登录页
                 .loginProcessingUrl("/authorization/login")//为指定的登录页指定form(action)提交路径
+                .successHandler(authSuccessHandler)//定义成功处理器
+                .failureHandler(authFailHandler)//定义失败处理器
                 .and()
                 .authorizeRequests()//然后授权请求方式
                 .antMatchers("/page/login/login.html","/**/*.css","/**/*.js","/favicon.ico").permitAll()//指定不拦截

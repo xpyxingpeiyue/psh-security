@@ -156,8 +156,8 @@ execution(* com.travelsky.ccboy.dao..*.find*(..)) || execution(* com.travelsky.c
  
  #### SpringSecurity开发基于表单的认证  
  #####个性化认证流程  
- - 自定义登录页面  
- - 自定义登录成功处理  
+ - 自定义登录页面   http.formLogin().loginPage("/page/login/login.html")//指定登录页
+ - 自定义登录成功处理    AuthenticationSuccessHandler 异步表单登录 
  - 自定义登录失败处理
  
  
