@@ -2,6 +2,7 @@ package com.psh.handler;
 
 import com.psh.exception.UserException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -26,6 +27,14 @@ public class ControllerExceptionHandler {
         Map<String, Object> map = new HashMap<>();
         map.put("id", ex.getId());
         map.put("message", ex.getMessage());
+        return map;
+    }
+    @ExceptionHandler
+    @ResponseBody
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public Map<String, Object> handleException(MethodArgumentNotValidException exception) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("message", exception.getBindingResult().getFieldError().getDefaultMessage());
         return map;
     }
 }
