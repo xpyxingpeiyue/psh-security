@@ -17,7 +17,8 @@ public class FileTypeUtil {
 
     /**
      * 将文件头转换成16进制字符串
-     * @param  src
+     *
+     * @param src
      * @return 16进制字符串
      */
     private static String bytesToHexString(byte[] src) {
@@ -38,6 +39,7 @@ public class FileTypeUtil {
 
     /**
      * 得到文件头
+     *
      * @param is 文件路径
      * @return 文件头
      * @throws IOException
@@ -65,6 +67,7 @@ public class FileTypeUtil {
 
     /**
      * 获取文件类型类
+     *
      * @param is 文件路径
      * @return 文件类型
      */
@@ -85,13 +88,14 @@ public class FileTypeUtil {
 
     /**
      * 获取文件类型
+     *
      * @param is
      * @return
      * @throws Exception
      */
-    public static String getFileType(InputStream is) throws Exception{
+    public static String getFileType(InputStream is) throws Exception {
         FileType fileType = getType(is);
-        if(fileType!=null){
+        if (fileType != null) {
             return fileType.getValue();
         }
         return null;

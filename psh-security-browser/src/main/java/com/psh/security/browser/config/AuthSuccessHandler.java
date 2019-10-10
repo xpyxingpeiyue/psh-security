@@ -19,16 +19,16 @@ import java.io.IOException;
 @Component
 public class AuthSuccessHandler implements AuthenticationSuccessHandler {
     private static final Log log = LogFactory.get();
+
     /**
-     *
      * @param authentication 封装认证信息  UserDetails
      * @throws IOException
      * @throws ServletException
      */
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-            response.setContentType("application/json;charset=UTF-8");
-            response.getWriter().write(JSONUtil.parse(authentication).toString());
-            log.info("已定义返回信息");
+        response.setContentType("application/json;charset=UTF-8");
+        response.getWriter().write(JSONUtil.parse(authentication).toString());
+        log.info("已定义返回信息");
     }
 }

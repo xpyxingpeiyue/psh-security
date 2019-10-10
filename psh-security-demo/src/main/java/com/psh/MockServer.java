@@ -11,6 +11,7 @@ import java.nio.charset.Charset;
  * Created by peiyue.xing on 2019/8/2 18:26
  * 提供前台测试数据
  * 有专门整合SpringBoot的例子
+ *
  * @author peiyue.xing
  */
 public class MockServer {
@@ -28,7 +29,7 @@ public class MockServer {
         String str = ResourceUtil.readStr("mock/response/order.json", Charset.forName("UTF-8"));
         WireMock.stubFor(WireMock.get(WireMock.urlPathEqualTo("/order/1"))
                 .willReturn(
-                        WireMock.aResponse().withBody(str).withStatus(200).withHeader("Content-Type","application/json;charset=UTF-8"))//解决中文乱码问题
+                        WireMock.aResponse().withBody(str).withStatus(200).withHeader("Content-Type", "application/json;charset=UTF-8"))//解决中文乱码问题
         );//测试桩数据
     }
 }

@@ -23,7 +23,7 @@ public class SerializableTest {
 //            Object  obj = inputStream.readObject();
 //            System.out.println(JSONUtil.parseObj(obj).toString());
             User user = (User) inputStream.readObject();
-            System.out.println("user"+user);
+            System.out.println("user" + user);
         } catch (Exception e) {
             System.out.println(e);
         } finally {

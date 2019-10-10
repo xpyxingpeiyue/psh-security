@@ -18,11 +18,11 @@ import java.io.IOException;
 @Component
 public class AuthFailHandler implements AuthenticationFailureHandler {
     private static final Log log = LogFactory.get();
+
     /**
-     *
      * @param request
      * @param response
-     * @param authenticationException  登录失败 所以不是authentication 而是失败信息，封装失败原因
+     * @param authenticationException 登录失败 所以不是authentication 而是失败信息，封装失败原因
      * @throws IOException
      * @throws ServletException
      */

@@ -12,9 +12,10 @@ import java.lang.annotation.Target;
 /**
  * Created by peiyue.xing on 2019/7/29 21:10
  * 自定义约束注解，统一校验
+ *
  * @version:
  */
-@Target({ElementType.METHOD,ElementType.FIELD})
+@Target({ElementType.METHOD, ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(
         validatedBy = MyConstraintValidator.class

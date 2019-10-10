@@ -15,8 +15,15 @@ import java.util.Date;
  * @version:
  */
 public class User implements Serializable {
-    public interface UserSimpleView{};//公共显示
-    public interface UserComplexView extends UserSimpleView{};//特殊显示
+    public interface UserSimpleView {
+    }
+
+    ;//公共显示
+
+    public interface UserComplexView extends UserSimpleView {
+    }
+
+    ;//特殊显示
 
     private String id;
 

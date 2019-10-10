@@ -21,9 +21,9 @@ public class MockQueue {
         return placeOrder;
     }
 
-    public void setPlaceOrder(String placeOrder){
+    public void setPlaceOrder(String placeOrder) {
         //单独的应用2程序来处理
-        new Thread(()->{
+        new Thread(() -> {
             log.info("接到下单请求:" + placeOrder);
             try {
                 Thread.sleep(1000);
@@ -31,7 +31,7 @@ public class MockQueue {
                 e.printStackTrace();
             }
             this.completeOrder = placeOrder;
-           log.info("接到订单请求完成：" + completeOrder);
+            log.info("接到订单请求完成：" + completeOrder);
         }).start();
     }
 

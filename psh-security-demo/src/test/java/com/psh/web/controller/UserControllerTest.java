@@ -68,6 +68,7 @@ public class UserControllerTest {
                 .getContentAsString();
         System.out.println(info);
     }
+
     @Test
     public void whenGetInfoFail() throws Exception {
         //验证地址校验
@@ -95,6 +96,7 @@ public class UserControllerTest {
         //返回时客户端会自动把时间转为时间戳
         //{"id":"1","username":"ing","password":"12548","birthday":1564402295924}
     }
+
     @Test
     public void whenUpdateSuccess() throws Exception {
         Date date = new Date(LocalDate.now().plusYears(1L).atStartOfDay(ZoneOffset.ofHours(8)).toInstant().toEpochMilli());
@@ -106,6 +108,7 @@ public class UserControllerTest {
                 .andReturn().getResponse().getContentAsString();
         System.out.println(str);
     }
+
     @Test
     public void whenDeleteSuccess() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.delete("/user/1")

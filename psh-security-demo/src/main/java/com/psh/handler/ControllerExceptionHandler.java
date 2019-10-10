@@ -15,6 +15,7 @@ import java.util.Map;
  * Created by peiyue.xing on 2019/7/30 12:02
  * 自定义异常处理控制器
  * 不会再区分浏览器和接口访问（postman）返回不同信息（默认异常不执行）
+ *
  * @author peiyue.xing
  */
 @ControllerAdvice
@@ -29,6 +30,7 @@ public class ControllerExceptionHandler {
         map.put("message", ex.getMessage());
         return map;
     }
+
     @ExceptionHandler
     @ResponseBody
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)

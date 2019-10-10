@@ -28,7 +28,7 @@ public class PdfToImage {
     public static void pdfToImage(String pdfPath, String imgPath) {
         try {
 
-            System.setProperty("sun.java2d.cmm","sun.java2d.cmm.kcms.KcmsServiceProvider");
+            System.setProperty("sun.java2d.cmm", "sun.java2d.cmm.kcms.KcmsServiceProvider");
             //图像合并使用参数
             // 总宽度
             int width = 0;
@@ -70,7 +70,7 @@ public class PdfToImage {
 
 
     public static void main(String[] args) {
-        pdfToImage("D://pdf//本人人才引进呈报表.pdf","D://pdf//temp150.jpg");
+        pdfToImage("D://pdf//本人人才引进呈报表.pdf", "D://pdf//temp150.jpg");
     }
 
 }

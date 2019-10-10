@@ -11,23 +11,24 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Created by peiyue.xing on 2019/7/30 19:51
  * 使用interceptor  spring封装的处理拦截请求
- *org.springframework.boot.autoconfigure.web.BasicErrorController 也会拦截，作用于controller拦截
- *
+ * org.springframework.boot.autoconfigure.web.BasicErrorController 也会拦截，作用于controller拦截
+ * <p>
  * 缺点 ： 只能获取类和方法，但是（preHandle）无法获取（handler）参数
  * DispatcherServlet->doService->doDispatch
  * applyPreHandle没有对参数做处理
  * if (!mappedHandler.applyPreHandle(processedRequest, response)) {
- *      return;
+ * return;
  * }
- *  mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
- *
+ * mv = ha.handle(processedRequest, response, mappedHandler.getHandler());
+ * <p>
  * 要想获取参数只能使用切片
  * 切片（类）
  * 切入点（注解）
  * 在那些方法上起作用，在什么时候起作用
- *
+ * <p>
  * 增加（方法）
  * 起作用时执行的业务逻辑
+ *
  * @author peiyue.xing
  */
 //声明注解还无法起作用还需要配置

@@ -6,6 +6,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * Created by peiyue.xing on 2019/7/29 14:20
+ *
  * @author peiyue.xing
  */
 @SpringBootApplication

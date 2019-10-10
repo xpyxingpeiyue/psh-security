@@ -19,6 +19,7 @@ public class GPSConverterUtils {
 
     /**
      * 84 to 火星坐标系 (GCJ-02) World Geodetic System ==> Mars Geodetic System
+     *
      * @param lat
      * @param lon
      */
@@ -79,6 +80,7 @@ public class GPSConverterUtils {
 
     /**
      * (BD-09)-->84
+     *
      * @param bd_lat
      * @param bd_lon
      * @return
@@ -94,6 +96,7 @@ public class GPSConverterUtils {
 
     /**
      * is or not outOfChina
+     *
      * @param lat
      * @param lon
      * @return
@@ -144,6 +147,6 @@ public class GPSConverterUtils {
     }
 
     public static void main(String[] args) {
-        StaticLog.info("gps:{}",gps84_To_Gcj02(22.573009260134107,113.847190360077));
+        StaticLog.info("gps:{}", gps84_To_Gcj02(22.573009260134107, 113.847190360077));
     }
 }

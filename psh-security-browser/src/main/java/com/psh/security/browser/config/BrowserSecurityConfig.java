@@ -31,6 +31,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private SecurityProperties securityProperties;
+
     //定义加密解密方式
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -48,7 +49,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(authFailHandler)//定义失败处理器
                 .and()
                 .authorizeRequests()//然后授权请求方式
-                .antMatchers("/page/login/login.html","/**/*.css","/**/*.js","/favicon.ico").permitAll()//指定不拦截
+                .antMatchers("/page/login/login.html", "/**/*.css", "/**/*.js", "/favicon.ico").permitAll()//指定不拦截
                 .anyRequest()//任何请求
                 .authenticated()//都需要身份认证
                 .and()
