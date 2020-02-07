@@ -1,6 +1,5 @@
 package com.psh.web.controller;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 import cn.hutool.core.util.RandomUtil;
 import cn.hutool.log.Log;
 import cn.hutool.log.LogFactory;
